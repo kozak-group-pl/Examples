@@ -1,0 +1,43 @@
+spring:
+  cloud:
+    aws:
+      s3:
+        document-bucket: DEMO_AWS_BUCKET
+    openfeign:
+      client:
+        config:
+          external-service-integration:
+            url: https://externalService.com
+  graphql:
+    schema:
+      locations: "classpath*:graphql/**/"
+    graphiql:
+      enabled: true
+  datasource:
+    url: jdbc:postgresql://localhost:5433/crm_db?connectionTimeZone=UTC&stringtype=unspecified
+    username: crm-user
+    password: crm-pass
+    driverClassName: org.postgresql.Driver
+    hikari:
+      connection-test-query: SELECT 1
+      minimum-idle: 3
+      maximum-pool-size: 100
+      pool-name: crm_pool
+  liquibase:
+    enabled: false
+    change-log: classpath:/db/changelog/changelog-master.yaml
+  jpa:
+    show-sql: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    generate-ddl: false
+    hibernate:
+      ddl-auto: none
+    open-in-view: false
+    properties:
+      org:
+        hibernate:
+          envers:
+            store_data_at_delete: true
+      hibernate:
+        jdbc:
+          time_zone: UTC

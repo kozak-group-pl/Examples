@@ -1,0 +1,12 @@
+databaseChangeLog:
+  - changeSet:
+      id: 622b4c2b-f844-46df-b504-f2bb8e587c7d
+      author: Demo Developer
+      changes:
+        - addColumn:
+            tableName: attached_document
+            columns:
+              - column:
+                  name: download_available
+                  type: boolean
+                  defaultValue: "false"

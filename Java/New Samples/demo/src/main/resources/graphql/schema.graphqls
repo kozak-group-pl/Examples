@@ -1,0 +1,38 @@
+type Query{
+
+}
+
+type Mutation{
+
+}
+
+schema {
+    query: Query
+    mutation: Mutation
+}
+
+input SortingInput{
+    count: Int
+    page: Int
+    filter: String
+    order: String
+}
+
+enum ContractType{
+    PRIVATE
+    BUSINESS
+}
+
+enum ResponseStatus {
+    SUCCESS
+    FAILURE
+}
+
+interface MutationResponse {
+    status: ResponseStatus!
+}
+
+interface ErrorResponse {
+    status: ResponseStatus!
+    message: String!
+}

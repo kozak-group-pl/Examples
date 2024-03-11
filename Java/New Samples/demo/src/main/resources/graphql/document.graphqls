@@ -1,0 +1,38 @@
+extend type Query {
+    getDocumentById(id: ID): Document
+}
+
+extend type Mutation {
+    addDocument(document: DocumentInput): Document
+}
+
+type DocumentResponse{
+    total: Int
+    records: [Document]
+}
+
+type Document {
+    id: ID
+    name: String
+    contractId: ID
+    processStepId: ID
+    type: String
+    category: String
+    assignUser: String
+    size: Int
+    customData: String
+    createdBy: String
+    createdAt: String
+    updatedBy: String
+    updatedAt: String
+}
+
+input DocumentInput {
+    id: ID
+    bucketLink: String
+    customData: String
+    documentType: String
+    contract: String
+    processStep: String
+    name: String
+}

@@ -1,0 +1,83 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: Demo Developer
+      changes:
+        - createTable:
+            tableName: attached_document
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  value: uid.uuid_generate_v4()
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: contract_id
+                  type: uuid
+                  constraints:
+                    foreignKeyName: fk_contract_id
+                    references: contract(id)
+                    nullable: false
+              - column:
+                  name: process_step_id
+                  type: uuid
+                  constraints:
+                    foreignKeyName: fk_process_step_id
+                    references: process_step(id)
+                    nullable: true
+              - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: bucket_link
+                  type: text
+                  constraints:
+                    nullable: false
+              - column:
+                  name: document_type
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: document_category
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: document_size
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: custom_data
+                  type: json
+                  constraints:
+                    nullable: true
+              - column:
+                  name: created_at
+                  type: timestamp
+                  value: current_timestamp
+                  defaultValueDate: current_timestamp
+                  constraints:
+                    nullable: false
+              - column:
+                  name: updated_at
+                  type: timestamp
+                  value: current_timestamp
+                  defaultValueDate: current_timestamp
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_by
+                  type: varchar(64)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: updated_by
+                  type: varchar(64)
+                  constraints:
+                    nullable: true
